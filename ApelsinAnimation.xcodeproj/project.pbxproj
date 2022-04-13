@@ -8,24 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		C730AD822807088C0043751D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C730AD812807088C0043751D /* AppDelegate.swift */; };
-		C730AD842807088C0043751D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C730AD832807088C0043751D /* SceneDelegate.swift */; };
-		C730AD862807088C0043751D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C730AD852807088C0043751D /* ViewController.swift */; };
-		C730AD892807088C0043751D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C730AD872807088C0043751D /* Main.storyboard */; };
 		C730AD8C2807088D0043751D /* ApelsinAnimation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C730AD8A2807088D0043751D /* ApelsinAnimation.xcdatamodeld */; };
 		C730AD8E280708940043751D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C730AD8D280708940043751D /* Assets.xcassets */; };
 		C730AD91280708940043751D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C730AD8F280708940043751D /* LaunchScreen.storyboard */; };
+		C730AD9A28070A8F0043751D /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C730AD9828070A8F0043751D /* MainVC.swift */; };
+		C730AD9B28070A8F0043751D /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C730AD9928070A8F0043751D /* MainVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C730AD7E2807088C0043751D /* ApelsinAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApelsinAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C730AD812807088C0043751D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C730AD832807088C0043751D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C730AD852807088C0043751D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C730AD882807088C0043751D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C730AD8B2807088D0043751D /* ApelsinAnimation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ApelsinAnimation.xcdatamodel; sourceTree = "<group>"; };
 		C730AD8D280708940043751D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C730AD90280708940043751D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C730AD92280708940043751D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C730AD9828070A8F0043751D /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		C730AD9928070A8F0043751D /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				C730AD812807088C0043751D /* AppDelegate.swift */,
-				C730AD832807088C0043751D /* SceneDelegate.swift */,
-				C730AD852807088C0043751D /* ViewController.swift */,
-				C730AD872807088C0043751D /* Main.storyboard */,
+				C730AD9828070A8F0043751D /* MainVC.swift */,
+				C730AD9928070A8F0043751D /* MainVC.xib */,
 				C730AD8D280708940043751D /* Assets.xcassets */,
 				C730AD8F280708940043751D /* LaunchScreen.storyboard */,
 				C730AD92280708940043751D /* Info.plist */,
@@ -128,9 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C730AD9B28070A8F0043751D /* MainVC.xib in Resources */,
 				C730AD91280708940043751D /* LaunchScreen.storyboard in Resources */,
 				C730AD8E280708940043751D /* Assets.xcassets in Resources */,
-				C730AD892807088C0043751D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +138,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C730AD862807088C0043751D /* ViewController.swift in Sources */,
 				C730AD8C2807088D0043751D /* ApelsinAnimation.xcdatamodeld in Sources */,
+				C730AD9A28070A8F0043751D /* MainVC.swift in Sources */,
 				C730AD822807088C0043751D /* AppDelegate.swift in Sources */,
-				C730AD842807088C0043751D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C730AD872807088C0043751D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C730AD882807088C0043751D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C730AD8F280708940043751D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -220,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -296,9 +284,10 @@
 				INFOPLIST_FILE = ApelsinAnimation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,9 +313,10 @@
 				INFOPLIST_FILE = ApelsinAnimation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
