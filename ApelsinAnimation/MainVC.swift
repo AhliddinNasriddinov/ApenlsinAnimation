@@ -9,13 +9,15 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var animationView: UIView!
     
     @IBOutlet weak var sumLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var animationViewHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
-    
-    var sideViewKorinyaptimi = true
+    @IBOutlet weak var sumLabelTopConstrant: NSLayoutConstraint!
+    var lastKnowContentOfsset:CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
@@ -48,61 +50,143 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource {
         return 100
         
     }
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if scrollView.contentOffset.y > -45 && sideViewKorinyaptimi{
+        if scrollView == tableView {
+            let contentOffset = scrollView.contentOffset.y / 10
+            print("contentOffset: ", contentOffset)
+            self.manageAnimation(contentOffset: contentOffset)
+            self.lastKnowContentOfsset = scrollView.contentOffset.y / 10
             
-            UIView.animate(withDuration: 0.1) {
-                
-//                self.sideView.transform = .init(translationX: 60, y: -60)
-                
-            }
-            sideViewKorinyaptimi = false
-            
-        }else if scrollView.contentOffset.y < -45  && !sideViewKorinyaptimi{
-            
-            UIView.animate(withDuration: 0.1) {
-                
-//                self.sideView.transform = .identity
-            }
-            sideViewKorinyaptimi = true
+//            if (contentOffset > self.lastKnowContentOfsset) {
+//                if contentOffset < 1.8 {
+//                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+//                        animationViewHeightConstraint.constant = animationViewHeightConstraint.constant - contentOffset*57
+//                        sumLabel.transform = CGAffineTransform(translationX: 30, y: -contentOffset*60)
+//                        searchView.isHidden = true
+////                        sumLabelTopConstrant.constant = sumLabelTopConstrant.constant - contentOffset/10
+//
+//                    } completion: { (_) in
+//
+//                    }
+//                }
+//                print("scrolling Down")
+//                print("dragging Up")
+//            } else {
+////                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+//////                    animationViewHeightConstraint.constant = animationViewHeightConstraint.constant + contentOffset
+////                    sumLabelTopConstrant.constant = sumLabelTopConstrant.constant + contentOffset
+////
+////                } completion: { (_) in
+////
+////                }
+//                print("scrolling Up")
+//                print("dragging Down")
+//            }
         }
-        
-        //--------------------------------------------------------
-        //bu yer tezda pasga scroll qilganda avvalgi xolatga qaytaradi
-        
-        if scrollView.contentOffset.y < -45{
-            UIView.animate(withDuration: 0.1) {
-//                self.lbl.transform = .identity
-            }
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView == tableView {
+            self.lastKnowContentOfsset = scrollView.contentOffset.y / 10
+//            print("scrollViewDidEndDragging \(self.lastKnowContentOfsset)")
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastKnowContentOfsset = scrollView.contentOffset.y / 10
+    }
+    
+    
+    
+}
+
+
+extension MainVC {
+    
+    func manageAnimation(contentOffset: CGFloat){
         
-        //bu tekshiradi, qachonki tableviewni top inseti tugab ya'ni 0 bo'lib 45 dan o'tganda qaytarib navbarni ichiga qo'yadi, xuddiki tepadan bounce bo'lgandek bolishini ta'minlaydi
+        if (contentOffset > self.lastKnowContentOfsset) {
+            
+            self.manageViewAnimation(contentOffset: contentOffset, isUp: true)
+            self.manageLabelAnimation(contentOffset: contentOffset, isUp: true)
+            
+            
+            print("scrolling Up")
+           
+        } else {
+            
+            self.manageViewAnimation(contentOffset: contentOffset, isUp: false)
+            self.manageLabelAnimation(contentOffset: contentOffset, isUp: false)
+           
+            print("scrolling Down")
+           
+        }
+    }
+    
+    func manageViewAnimation(contentOffset : CGFloat, isUp : Bool){
+       
+        let height = animationViewHeightConstraint.constant
         
-        if scrollView.contentOffset.y > 45{
-            UIView.animate(withDuration: 0.2) {
-//                self.lbl.transform = .init(translationX: 80, y: -60)
-            }
-            
-            //agar pasdagi if blokdagi -45 ni o'zgartirish kerak bo'lsa  barcha 45 larni shu songa o'zgartirish kerak. 45 va -45 lar bir xil bo'lishi kerak, Masalan: -45 edi if da, transformda esa 45, shuni -100 ga o'zgartirilsa 45 ham 100 bo'ladi
-            
-        }else if scrollView.contentOffset.y > -45 {
-            if sumLabel.frame.minX <= 65 {
-                sumLabel.transform = .init(translationX: (45 + scrollView.contentOffset.y) / 3, y: -1 * (45 + scrollView.contentOffset.y))
-            }
-            if scrollView.contentOffset.y > 0 {
-                sumLabel.transform = .init(translationX: (45 / 3) + (scrollView.contentOffset.y / 3), y: -1 * (45 + scrollView.contentOffset.y))
-                if tableViewTopConstraint.constant > 0 {
-                    tableViewTopConstraint.constant = tableViewTopConstraint.constant - scrollView.contentOffset.y
-                    
+        if isUp {
+        
+            if contentOffset < 10 && height >= CGFloat(0) &&  height < CGFloat(101) {
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
+                    let newH = animationViewHeightConstraint.constant - contentOffset * 10
+                    if newH < CGFloat(0) {
+                        animationViewHeightConstraint.constant = 0
+                    }else{
+                        animationViewHeightConstraint.constant = newH >= CGFloat(100) ? 100 : newH
+                    }
+                               
+                } completion: { (_) in
+
                 }
-                
             }
-            
+        }else{
+           
+            if contentOffset >=  -10 && contentOffset <= 0 && height <= CGFloat(100) {
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
+                    let newH = animationViewHeightConstraint.constant - contentOffset * 10
+                    if newH > CGFloat(100) {
+                        animationViewHeightConstraint.constant = 100
+                    }else{
+                        animationViewHeightConstraint.constant = newH < CGFloat(0) ? 0 : newH
+                    }
+                    
+
+                } completion: { (_) in
+
+                }
+            }
         }
         
-        //--------------------------------------------------------
-        
+    }
+    
+    func manageLabelAnimation(contentOffset : CGFloat, isUp : Bool){
+        if isUp {
+            if contentOffset < 1.8 {
+                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+                    sumLabel.transform = CGAffineTransform(translationX: 30, y: -contentOffset*60)
+                    searchView.isHidden = true
+                } completion: { (_) in
+
+                }
+            }
+        }else{
+            
+        }
+    }
+
+    
+    
+    func manageApelsinAnimation(contentOffset : CGFloat, isUp : Bool){
+        if isUp {
+           
+        }else{
+            
+        }
     }
     
     
@@ -111,4 +195,8 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource {
     
     
     
+    
+    
 }
+    
+
