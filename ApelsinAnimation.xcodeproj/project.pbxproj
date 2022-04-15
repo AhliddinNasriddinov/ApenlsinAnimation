@@ -62,11 +62,10 @@
 		C730AD802807088C0043751D /* ApelsinAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				CE1384892809764600ACE9E4 /* Cells */,
 				C730AD812807088C0043751D /* AppDelegate.swift */,
 				C703A19528082D27004CF43A /* Faceid.swift */,
 				C730AD9828070A8F0043751D /* MainVC.swift */,
-				C703A19128081B9E004CF43A /* DefaultTableViewCell.swift */,
-				C703A19228081B9E004CF43A /* DefaultTableViewCell.xib */,
 				C730AD9928070A8F0043751D /* MainVC.xib */,
 				C730AD8D280708940043751D /* Assets.xcassets */,
 				C730AD8F280708940043751D /* LaunchScreen.storyboard */,
@@ -74,6 +73,31 @@
 				C730AD8A2807088D0043751D /* ApelsinAnimation.xcdatamodeld */,
 			);
 			path = ApelsinAnimation;
+			sourceTree = "<group>";
+		};
+		CE1384892809764600ACE9E4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE13848B2809765F00ACE9E4 /* UICollectionViewCell */,
+				CE13848A2809765000ACE9E4 /* UITableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CE13848A2809765000ACE9E4 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C703A19128081B9E004CF43A /* DefaultTableViewCell.swift */,
+				C703A19228081B9E004CF43A /* DefaultTableViewCell.xib */,
+			);
+			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		CE13848B2809765F00ACE9E4 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

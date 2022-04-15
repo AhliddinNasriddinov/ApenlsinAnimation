@@ -9,6 +9,8 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var sliderView: UIView!
+    
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var animationView: UIView!
     
@@ -111,7 +113,7 @@ extension MainVC {
             
             self.manageViewAnimation(contentOffset: contentOffset, isUp: true)
             self.manageLabelAnimation(contentOffset: contentOffset, isUp: true)
-            
+            manageApelsinAnimation(contentOffset: contentOffset, isUp: true)
             
             print("scrolling Up")
            
@@ -119,7 +121,7 @@ extension MainVC {
             
             self.manageViewAnimation(contentOffset: contentOffset, isUp: false)
             self.manageLabelAnimation(contentOffset: contentOffset, isUp: false)
-           
+            self.manageApelsinAnimation(contentOffset: contentOffset, isUp: false)
             print("scrolling Down")
            
         }
@@ -168,34 +170,50 @@ extension MainVC {
         if isUp {
             if contentOffset < 1.8 {
                 UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
-                    sumLabel.transform = CGAffineTransform(translationX: 30, y: -contentOffset*60)
+//                    sumLabel.transform = CGAffineTransform(translationX: 30, y: -contentOffset*60)
+                sumLabelTopConstrant.constant = 120 - contentOffset*60
                     searchView.isHidden = true
                 } completion: { (_) in
 
                 }
             }
-        }else{
-            
+        }else if  sumLabelTopConstrant.constant < 120 {
+            UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+                sumLabel.transform =  .identity
+            } completion: { (_) in
+                
+            }
+            // CGAffineTransform(translationX: 30, y: -contentOffset*60)
+//            sumLabelTopConstrant.constant = contentOffset*60
+                searchView.isHidden = true
         }
     }
 
     
     
-    func manageApelsinAnimation(contentOffset : CGFloat, isUp : Bool){
-        if isUp {
-           
-        }else{
+func manageApelsinAnimation(contentOffset : CGFloat, isUp : Bool) {
+    if isUp {
+        if contentOffset < 1.8 && contentOffset > 0 {
+            UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+                sliderView.transform = CGAffineTransform(translationX: 50, y: 0)
+                print("contentOffset60",contentOffset*60)
+            } completion: { [self] (_) in
+                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+                    sliderView.transform = CGAffineTransform(translationX: 50, y: -contentOffset*60)
+                } completion: {  (_) in
+                    
+                }
+            }
+        }
+                    
+    }else if contentOffset <= 0 {
+        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+            sliderView.transform = .identity
+        } completion: { (_) in
             
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
+}
     
 }
     
