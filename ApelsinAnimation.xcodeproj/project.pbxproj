@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C703A19328081B9E004CF43A /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703A19128081B9E004CF43A /* DefaultTableViewCell.swift */; };
 		C703A19428081B9E004CF43A /* DefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C703A19228081B9E004CF43A /* DefaultTableViewCell.xib */; };
-		C703A19628082D27004CF43A /* Faceid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703A19528082D27004CF43A /* Faceid.swift */; };
 		C730AD822807088C0043751D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C730AD812807088C0043751D /* AppDelegate.swift */; };
 		C730AD8C2807088D0043751D /* ApelsinAnimation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C730AD8A2807088D0043751D /* ApelsinAnimation.xcdatamodeld */; };
 		C730AD8E280708940043751D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C730AD8D280708940043751D /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		C703A19128081B9E004CF43A /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		C703A19228081B9E004CF43A /* DefaultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultTableViewCell.xib; sourceTree = "<group>"; };
-		C703A19528082D27004CF43A /* Faceid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faceid.swift; sourceTree = "<group>"; };
 		C730AD7E2807088C0043751D /* ApelsinAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApelsinAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C730AD812807088C0043751D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C730AD8B2807088D0043751D /* ApelsinAnimation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ApelsinAnimation.xcdatamodel; sourceTree = "<group>"; };
@@ -64,7 +62,6 @@
 			children = (
 				CE1384892809764600ACE9E4 /* Cells */,
 				C730AD812807088C0043751D /* AppDelegate.swift */,
-				C703A19528082D27004CF43A /* Faceid.swift */,
 				C730AD9828070A8F0043751D /* MainVC.swift */,
 				C730AD9928070A8F0043751D /* MainVC.xib */,
 				C730AD8D280708940043751D /* Assets.xcassets */,
@@ -172,7 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C703A19628082D27004CF43A /* Faceid.swift in Sources */,
 				C730AD8C2807088D0043751D /* ApelsinAnimation.xcdatamodeld in Sources */,
 				C703A19328081B9E004CF43A /* DefaultTableViewCell.swift in Sources */,
 				C730AD9A28070A8F0043751D /* MainVC.swift in Sources */,

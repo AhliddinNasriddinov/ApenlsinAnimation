@@ -60,79 +60,44 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource {
             print("contentOffset: ", contentOffset)
             self.manageAnimation(contentOffset: contentOffset)
             self.lastKnowContentOfsset = scrollView.contentOffset.y / 10
-            
-//            if (contentOffset > self.lastKnowContentOfsset) {
-//                if contentOffset < 1.8 {
-//                    UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
-//                        animationViewHeightConstraint.constant = animationViewHeightConstraint.constant - contentOffset*57
-//                        sumLabel.transform = CGAffineTransform(translationX: 30, y: -contentOffset*60)
-//                        searchView.isHidden = true
-////                        sumLabelTopConstrant.constant = sumLabelTopConstrant.constant - contentOffset/10
-//
-//                    } completion: { (_) in
-//
-//                    }
-//                }
-//                print("scrolling Down")
-//                print("dragging Up")
-//            } else {
-////                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
-//////                    animationViewHeightConstraint.constant = animationViewHeightConstraint.constant + contentOffset
-////                    sumLabelTopConstrant.constant = sumLabelTopConstrant.constant + contentOffset
-////
-////                } completion: { (_) in
-////
-////                }
-//                print("scrolling Up")
-//                print("dragging Down")
-//            }
+     
         }
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView == tableView {
             self.lastKnowContentOfsset = scrollView.contentOffset.y / 10
-//            print("scrollViewDidEndDragging \(self.lastKnowContentOfsset)")
         }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.lastKnowContentOfsset = scrollView.contentOffset.y / 10
     }
-    
-    
-    
+
 }
 
 
 extension MainVC {
     
     func manageAnimation(contentOffset: CGFloat){
+         
+        let isUp = contentOffset > self.lastKnowContentOfsset
+        self.manageViewAnimation(contentOffset: contentOffset, isUp: isUp)
+        self.manageLabelAnimation(contentOffset: contentOffset, isUp: isUp)
+        manageApelsinAnimation(contentOffset: contentOffset, isUp: isUp)
+       
         
-        if (contentOffset > self.lastKnowContentOfsset) {
-            
-            self.manageViewAnimation(contentOffset: contentOffset, isUp: true)
-            self.manageLabelAnimation(contentOffset: contentOffset, isUp: true)
-            manageApelsinAnimation(contentOffset: contentOffset, isUp: true)
-            
+        if isUp {
             print("scrolling Up")
-           
         } else {
-            
-            self.manageViewAnimation(contentOffset: contentOffset, isUp: false)
-            self.manageLabelAnimation(contentOffset: contentOffset, isUp: false)
-            self.manageApelsinAnimation(contentOffset: contentOffset, isUp: false)
             print("scrolling Down")
-           
         }
     }
     
     func manageViewAnimation(contentOffset : CGFloat, isUp : Bool){
        
         let height = animationViewHeightConstraint.constant
-        
         if isUp {
-        
             if contentOffset < 10 && height >= CGFloat(0) &&  height < CGFloat(101) {
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
                     let newH = animationViewHeightConstraint.constant - contentOffset * 10
@@ -141,10 +106,7 @@ extension MainVC {
                     }else{
                         animationViewHeightConstraint.constant = newH >= CGFloat(100) ? 100 : newH
                     }
-                               
-                } completion: { (_) in
-
-                }
+                } completion: { (_) in  }
             }
         }else{
            
@@ -169,49 +131,63 @@ extension MainVC {
     func manageLabelAnimation(contentOffset : CGFloat, isUp : Bool){
         if isUp {
             if contentOffset < 1.8 {
-                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
-//                    sumLabel.transform = CGAffineTransform(translationX: 30, y: -contentOffset*60)
-                sumLabelTopConstrant.constant = 120 - contentOffset*60
-                    searchView.isHidden = true
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
+//                sumLabelTopConstrant.constant = 120 - contentOffset*60
+//                searchView.isHidden = true
                 } completion: { (_) in
 
                 }
             }
-        }else if  sumLabelTopConstrant.constant < 120 {
-            UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
-                sumLabel.transform =  .identity
+        }else if sumLabelTopConstrant.constant < 120 {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
+//                sumLabel.transform =  .identity
             } completion: { (_) in
                 
             }
             // CGAffineTransform(translationX: 30, y: -contentOffset*60)
 //            sumLabelTopConstrant.constant = contentOffset*60
-                searchView.isHidden = true
+//                searchView.isHidden = true
         }
     }
 
     
     
 func manageApelsinAnimation(contentOffset : CGFloat, isUp : Bool) {
+    print("manageApelsinAnimation \(contentOffset)")
     if isUp {
+        
         if contentOffset < 1.8 && contentOffset > 0 {
-            UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+            
+            UIView.animate(withDuration: 0.01, delay: 0, options: .curveLinear) { [self] in
+                
                 sliderView.transform = CGAffineTransform(translationX: 50, y: 0)
-                print("contentOffset60",contentOffset*60)
+            
             } completion: { [self] (_) in
-                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
                     sliderView.transform = CGAffineTransform(translationX: 50, y: -contentOffset*60)
                 } completion: {  (_) in
-                    
+
                 }
             }
         }
                     
     }else if contentOffset <= 0 {
-        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
-            sliderView.transform = .identity
-        } completion: { (_) in
+        UIView.animate(withDuration: 0.01, delay: 0, options: .curveLinear) { [self] in
             
+            sliderView.transform = CGAffineTransform(translationX: 100, y: 0)
+           
+        } completion: { [self] (_) in
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [self] in
+                sliderView.transform = .identity
+            } completion: {  (_) in
+
+            }
         }
+//        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) { [self] in
+//            sliderView.transform = .identity
+//        } completion: { (_) in
+//
+//        }
     }
 }
     
